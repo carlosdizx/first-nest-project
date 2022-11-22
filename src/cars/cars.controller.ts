@@ -19,8 +19,8 @@ export class CarsController {
     return this.service.findAll();
   }
   @Get(':id')
-  findOneById(@Param('id', ParseIntPipe) id: number) {
-    return this.service.findOneById(+id);
+  findOneById(@Param('id') id: string) {
+    return this.service.findOneById(id);
   }
 
   @Post()
@@ -29,12 +29,12 @@ export class CarsController {
   }
 
   @Patch(':id')
-  updateCar(@Param('id', ParseIntPipe) id: number, @Body() body: any) {
+  updateCar(@Param('id') id: string, @Body() body: any) {
     return body;
   }
 
   @Delete(':id')
-  deleteCar(@Param('id', ParseIntPipe) id: number) {
+  deleteCar(@Param('id', ParseIntPipe) id: string) {
     return { elementDeleted: this.service.findOneById(id) };
   }
 }
