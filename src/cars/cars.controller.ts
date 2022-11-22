@@ -6,8 +6,8 @@ import {
   Param,
   ParseUUIDPipe,
   Patch,
-  Post
-} from "@nestjs/common";
+  Post,
+} from '@nestjs/common';
 import { CarsService } from './cars.service';
 
 @Controller('cars')
@@ -19,7 +19,7 @@ export class CarsController {
     return this.service.findAll();
   }
   @Get(':id')
-  findOneById(@Param('id', ParseUUIDPipe) id: string) {
+  findOneById(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string) {
     return this.service.findOneById(id);
   }
 
