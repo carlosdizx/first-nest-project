@@ -58,7 +58,5 @@ export class CarsService {
     if (!carFound)
       throw new NotFoundException(`The car with id ${id} is not found`);
     this.cars = this.cars.filter((car) => car.id !== id);
-    console.log(this.cars.length);
-    return { message: `Car with id ${id} deleted` };
   };
 }
