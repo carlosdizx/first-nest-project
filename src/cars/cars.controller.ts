@@ -39,7 +39,7 @@ export class CarsController {
   }
 
   @Delete(':id')
-  deleteCar(@Param('id') id: string) {
-    return { elementDeleted: this.service.findOneById(id) };
+  deleteCar(@Param('id', ParseUUIDPipe) id: string) {
+    return this.service.delete(id);
   }
 }
