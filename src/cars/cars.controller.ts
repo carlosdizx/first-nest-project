@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { CarsService } from './cars.service';
 import { CreateCarDto } from './create-car.dto';
-import { UpdateCarDto } from "./update-car.dto";
+import { UpdateCarDto } from './update-car.dto';
 
 @Controller('cars')
 export class CarsController {
@@ -35,7 +35,7 @@ export class CarsController {
     @Param('id', ParseUUIDPipe) id: string,
     @Body() body: UpdateCarDto,
   ) {
-    return body;
+    return this.service.update(id, body);
   }
 
   @Delete(':id')
