@@ -45,7 +45,7 @@ export class BrandsService {
     this.brands = this.brands.map(brand => {
       if (brand.id === id) {
         brandFound.updatedAt = new Date();
-        brandFound.name = updateBrandDto.name;
+        brandFound = { ...brandFound, ...updateBrandDto };
         return brandFound;
       }
       return brand;
