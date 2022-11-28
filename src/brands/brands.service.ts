@@ -40,11 +40,21 @@ export class BrandsService {
     throw new NotFoundException("The brand not found");
   }
 
-  update(id: number, updateBrandDto: UpdateBrandDto) {
-    return `This action updates a #${id} brand`;
+  update(id: string, updateBrandDto: UpdateBrandDto) {
+    let brandFound: Brand = this.findOne(id);
+    this.brands = this.brands.map(brand => {
+      if (brand.id === id) {
+        brandFound.updatedAt = new Date();
+        brandFound.name = updateBrandDto.name;
+        return brandFound;
+      }
+      return brand;
+    });
+    return brandFound;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} brand`;
+  remove(id: string) {
+    this.findOne(id);
+    this.brands = this.brands.filter((brand) => brand.id !== id);
   }
 }
