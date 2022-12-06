@@ -1,5 +1,6 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { SeedService } from './seed.service';
+import { CARS_SEED } from "./data/cars.seed";
 
 @Controller('seed')
 export class SeedController {
@@ -7,6 +8,6 @@ export class SeedController {
 
   @Get()
   runSeed() {
-    return this.seedService.populateDB();
+    return CARS_SEED;
   }
 }

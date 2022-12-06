@@ -59,4 +59,8 @@ export class CarsService {
       throw new NotFoundException(`The car with id ${id} is not found`);
     this.cars = this.cars.filter((car) => car.id !== id);
   };
+
+  fillCarsWithSeedData = (cars: Car[]) => {
+      this.cars = cars;
+  }
 }
